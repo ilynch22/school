@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+    @font-face {font-family: Goofball; src: url('Goofball-AGL.ttf'); }
+    p { font-family: Goofball }
+</style>
+    <p> When a client accesses a website, the font is chosen based on the information given in the pages html file.
+    This is fairly straightforward, for the most part. There are many different, common fonts that are used across the web
+    that are often already downloaded on the user's PC. There are some cases, however, where a website uses a custom font
+    outside of the ones that are usually used. In this case, the web programmer simply needs to provide the location of the
+    font file to the html file. By doing this, the users will be able to download the custom font upon visiting the site.</p>
+
+<footer>
+    <p>Last updated: 
+        <span id="lastModified"></span>
+    </p>
+</footer>
+<script type="text/javascript">
+     var x = document.lastModified;
+     document.getElementById('lastModified').textContent = x;
+</script>
+
+</body>
+</html>

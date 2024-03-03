@@ -1,0 +1,88 @@
+.page {
+    background-color: rgb(104, 100, 100);
+    padding: 10px;
+    border-color: rgb(104, 100, 100);
+    border: 10px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight:bold;
+    background-color: beige;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-bottom: 15px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    padding: 5px;
+}
+
+.page-header {
+    background-color: beige;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.paper-title {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0px;
+}
+
+.author {
+    font-size: 20px;
+}
+
+.paper {
+    background-color: beige;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 15px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    padding: 5px;
+}
+
+.section-header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.section {
+    text-align: justify;
+    padding: 20px;
+    line-height: 1.25;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.references {
+    background-color: beige;
+    padding: 5px;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 15px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.25;
+}
+
+.addendum {
+    background-color: beige;
+    padding: 5px;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 15px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
+

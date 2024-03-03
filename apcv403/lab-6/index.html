@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 6</title>
+        <script src="js/script.js";></script>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+
+
+
+    <body style="margin: 0">
+        <div class="webpage">
+            <div class="holyGrail">
+                <div class="hgHeader">
+                    Word and Character Counter
+                </div>
+
+                <div class="hgMid">
+                    <div class="hgNavigation">
+                        <ul>
+                            <li><a href="https://ilynch22.github.io/apcv403/">Home</a></li>
+                            <li>About</li>
+                            <li>Further</li>
+                        </ul>
+                        <div class="navHeader">Check out our other tools!</div>
+                        <ul>
+                            <li>Plagiarism Checker</li>
+                            <li>AI Checker</li>
+                            <li>AI Paper Sources Tool</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="hgContent">
+                        <input type="text" id="toCount" placeholder="Paste text to be counted here...">
+                        
+                        <div class="outputTable">
+                            <button type="button" onclick="test()">Count Text</button>
+                            <div id="words"></div>
+                            <div id="characters"></div>
+                            <div id="spaces"></div>
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div class="hgAd">
+                        <a
+                            href="https://www.amazon.com/Cooler-Master-Sneaker-Gaming-Desktop/dp/B0CJTCJNZD/ref=asc_df_B0CJTCJNZD/?tag=hyprod-20&linkCode=df0&hvadid=680196369750&hvpos=&hvnetw=g&hvrand=14028800443151952137&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9030244&hvtargid=pla-2256931535262&psc=1&mcid=abdbb5ec65c3331399d1ff11f1b1d3d8&gad_source=1"><img
+                            src="pc-shoe-ad.png"></a>
+                    </div>
+
+                </div>
+
+                <div class="hgFooter">
+                    <div class="addendumTitle">
+                        Addendum
+                    </div>
+
+                    <div class="addendum">
+                        The problem that I set out to solve using javascript was to create a tool that could count the characters, words, and
+                        spaces of a pasted text. To accomplish this, I had to read in a string from an input box, create a button to actually
+                        count the string, and then process the string post-button-pressing. This first piece was relatively simple. For this I
+                        utilized the input class provided by HTML. Directly following this was where I ran into issues, however. I ran into a
+                        problem where my javascript file was seemingly going undetected by my VS code Live Server. The problem turned out to be
+                        caused by the location of my javascript file, even though it was directly adjacent to my html file in explorer.
+                        To solve this, I created two new folders within my site folder for both my javascript and css files. Following this bug,
+                        creating my site was fairly smooth sailing. This was my first time using javascript so it took my some time to learn
+                        syntax, but that was my main hurdle for the rest of the project.
+                        </div>
+                    
+                    <footer>
+                        <p>Last updated: 
+                            <span id="lastModified"></span>
+                        </p>
+                    </footer>
+                    <script type="text/javascript">
+                        var x = document.lastModified;
+                        document.getElementById('lastModified').textContent = x;
+                    </script>
+                </div>
+
+            </div>
+
+    </div>
+    </body>
+
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <title> Lights Out </title>
+</head>
+
+<body>
+    <a href="http://ilynch22.github.io/apcv403/">
+        <div class="home-button"> Home</div>
+    </a>
+
+    <div class="heading"> Lights Out Game </div>
+    
+    <div class="content">
+        <div class="board" id="board"></div>
+    </div>
+
+    <button onclick="startGame()"> Begin Game </button>
+
+    <div class="instructions">
+        Lights Out is a game that utilizes a 5x5 grid of "lights" where the player must toggle all lights off in order
+        to win. While this may sound easy enough, when a light is switched, the four adjacent lights are switched as well.
+        Below is an example with a click in the middle square: <div class="goodluck">Good luck!</div>
+        <div class="example">
+            <img src="before-click.png"> 
+            <div class="arrow"> &rarr; </div> 
+            <img src="after-click.png">
+        </div>
+    </div>
+
+    <div class="addendum">
+        <div class="addTitle"> Addendum</div>
+        &emsp; To begin this final project, I had to do a lot of research and learn some new concepts. While I have experience in Java,
+        I do not have experience in JavaScript so I had to figure out how to transfer my thought-up solution from Java to
+        JavaScript. This proved to be much more difficult than I thought. After a lot of trial and error my program finally
+        began to work, and I was able to get it to where it is now. <br> &emsp; That being said, one major sacrifice that I had to make
+        through trial and error was an external JavaScript file. So, I had to nest the JavaScript inside of script tags at the
+        end of the body. Outside of that, my code largely worked out how I thought it would. Most of my code lies in functions
+        and only two variable declarations and a function call lie outside. This function sets up 90% of the game; calling the
+        intialize grid function, which builds the grid and creates the event listeners tied to the squares on the grid. The
+        listener that is added listens for clicks on a square and then runs the toggleLight function with the event. The
+        toggleLight function then updates the grid with the newly toggled lights by calling the toggle function, calls the
+        update board function, and calls the win function to check for a win.
+        <br> &emsp; For the style I opted for a simplistic look similar to my last project's look. With simple colors like the ones that
+        I chose I think that the black outline+shadow combo looks really nice. I also changed the font as well in order to better fit the feel
+        of the site.
+    </div>
+
+    <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+    </script>
+
+    <script>
+        const size = 5; // define size so it can be used around the program
+        let grid = [] // define grid so it can be used around the program
+
+        createGrid();
+
+        function createGrid() {
+            const board = document.getElementById("board");
+
+            // this nested for loop creates the grid array and sets all squares to false, or off
+            for (let i = 0; i < size; i++) {
+                grid[i] = [];
+                for (let j = 0; j < size; j++) {
+                    grid[i][j] = false;
+                }
+            }
+
+            // this nested for loop creates the square div objects and adds event listeners for clicks.
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    const currSquare = document.createElement("div");
+                    currSquare.classList.add("square");
+                    currSquare.dataset.row = i;
+                    currSquare.dataset.col = j;
+                    currSquare.addEventListener('click', toggleLight) // click activates toggleLight
+                    board.appendChild(currSquare)
+                }
+            }
+        }
+
+        // this function handles the start game button
+        function startGame() {
+            for (let i = 0; i < 3; i++) {
+                const randX = Math.floor(Math.random() * size);
+                const randY = Math.floor(Math.random() * size);
+                toggleStart(randX, randY)
+            }
+        }
+
+        function toggleLight(event) {
+            // gets the x and y of the clicked square
+            const x = parseInt(event.target.dataset.row);
+            const y = parseInt(event.target.dataset.col);
+
+            // switches the clicked square and adjacent squares 
+            toggle(x, y);
+            toggle(x - 1, y);
+            toggle(x + 1, y);
+            toggle(x, y - 1);
+            toggle(x, y + 1);
+            
+            // updates board with newly-switched lights
+            update();
+
+            // checks for win
+            if (win()) {
+                alert("You win!")
+            }
+        }
+
+        // this function helps with the button for the start of the game.
+        // instead of using x's and y's assigned to clicked titles, it is given
+        // random x's and y's to toggle for the start of the game.
+        function toggleStart(x, y) {
+            toggle(x, y);
+            toggle(x - 1, y);
+            toggle(x + 1, y);
+            toggle(x, y - 1);
+            toggle(x, y + 1);
+            update();
+        }
+
+        function toggle(x, y) {
+            // this statement insures that the square coords to be toggled are in the range
+            // of the board. if they are in range then they are toggled.
+            if (x >= 0 && x < size && y >= 0 && y < size) {
+                grid[x][y] = !grid[x][y];
+            }
+        }
+
+        function update() {
+            const squares = document.querySelectorAll(".square");
+            squares.forEach((square) => {
+                // get x and y of current square
+                const x = parseInt(square.dataset.row);
+                const y = parseInt(square.dataset.col);
+                // if grid is on, add active to its class, toggling it visually
+                if (grid[x][y]) {
+                    square.classList.add("active");
+                }
+                // if square is off, remove active, toggling it visually (nothing if already off)
+                else {
+                    square.classList.remove("active");
+                }
+            });
+        }
+
+        function win() {
+            let win = true;
+            grid.forEach(row => {
+                row.forEach(square => {
+                    // if any square is true, the game has not been won yet so win is set to false.
+                    if (square) {
+                        win = false;
+                    }
+                })
+            })
+            return win;
+        }
+    </script>
+</body>
+</html>
